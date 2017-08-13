@@ -147,7 +147,7 @@ public class PurchaseController {
 	
 	
 	//@RequestMapping("/updatePurchase.do") // '수정' button 누르면, // 주의.....잘보시게....
-	@RequestMapping(value="updatePurchase", method=RequestMethod.POST)
+	@RequestMapping(value="updatePurchase", method=RequestMethod.POST) //RequestMethod.GET
 	public String updatePurchase( @ModelAttribute("purchase") Purchase purchase , Model model) throws Exception{
 
 		System.out.println("purchase/updatePurchase");

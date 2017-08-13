@@ -34,6 +34,12 @@
 			self.location = "/product/updateProduct?prodNo=${product.prodNo}"
 		});
 		 
+		 $( "td.ct_btn01:contains('구매')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( "td.ct_btn01:contains('구매')" ).html() );
+				self.location = "/purchase/addPurchaseView?prodNo=${product.prodNo}";
+		});
+		 
 		 $( "td.ct_btn01:contains('이전')" ).on("click" , function() {
 			//Debug..
 			//alert(  $( "td.ct_btn01:contains('이전')" ).html() );

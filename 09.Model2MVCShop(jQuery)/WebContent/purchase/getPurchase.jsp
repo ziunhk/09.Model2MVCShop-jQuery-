@@ -1,18 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page pageEncoding="EUC-KR"%>
 
-
-
-<%-- /////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////
-
-/////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// --%>    
-    
-
-
+<!DOCTYPE html>
 <html>
+
 <head>
+
+<meta charset="EUC-KR">
 <title>구매상세조회</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
+
+	<!-- CDN(Content Delivery Network) 호스트 사용 -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		
+		//==> 추가된부분 : "수정" "확인"  Event 연결 및 처리
+		 $(function() {
+			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			//==> 1 과 3 방법 조합 : $("tagName.className:filter함수") 사용함.	
+			$( "td.ct_btn01:contains('수정')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( "td.ct_btn01:contains('수정')" ).html() );
+				//self.location = "/purchase/updatePurchaseView?tranNo=${purchase.tranNo}";
+				self.location=$('.hidden_link', $(this)).text();
+				
+			});
+			
+			$( "td.ct_btn01:contains('확인')" ).on("click" , function() {
+				//Debug..
+				//alert(  $( "td.ct_btn01:contains('확인')" ).html() );
+				self.location = "/purchase/listPurchase";
+			});
+		});
+		
+	</script>
 
 </head>
 
@@ -144,7 +166,11 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
+						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="/purchase/updatePurchaseView?tranNo=${purchase.tranNo}">수정</a>
+						 ///////////////////////////////////////////////////////////////////////// -->
+						 수정
+						 <span style="display: none" class="hidden_link">/purchase/updatePurchaseView?tranNo=${purchase.tranNo}</span>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -154,8 +180,11 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
+						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="/purchase/listPurchase">확인</a>
-						<!-- <a href="javascript:history.go(-1);">확인</a> -->
+						 ///////////////////////////////////////////////////////////////////////// -->
+						 확인
+						<!-- <a href="javascript:history.go(-1);">확인</a> --> <!-- 이 line 확인 요망 -->
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif"width="14" height="23"/>

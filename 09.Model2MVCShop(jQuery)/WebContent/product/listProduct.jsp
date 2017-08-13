@@ -23,6 +23,7 @@
 	   	//document.detailForm.submit();
 		$("form").attr("method" , "POST").attr("action" , "/product/listProduct").submit();
 	}
+	
 	//====================================//
 	//==> 추가된 부분 : "검색", prodName link Event 연결 및 처리
 	$(function(){
@@ -48,6 +49,34 @@
 			//alert(  $("input:hidden[name='prodNo']",$(this)).val() );
 			//self.location ="/product/getProduct?prodNo="+prodNo; //$(this).text().trim()
 			//alert($('.hidden_link', $(this)).text());
+			self.location=$('.hidden_link', $(this)).text();
+		
+		});
+		
+		
+		//==> prodName LINK Event 연결처리
+		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		//==> 3 과 1 방법 조합 : $(".className tagName:filter함수") 사용함.
+		$( ".ct_list_pop td:nth-child(3)" ).on("click" , function() {
+			
+			//Debug..
+			//alert(  $("input:hidden[name='prodNo']",$(this)).val() );
+			//self.location ="/product/getProduct?prodNo="+prodNo; //$(this).text().trim()
+			//alert($('.hidden_link', $(this)).text());
+			self.location=$('.hidden_link', $(this)).text();
+		
+		});
+		
+		
+		//==> updateTranCode LINK Event 연결처리
+		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		//==> 3 과 1 방법 조합 : $(".className tagName:filter함수") 사용함.
+		$( ".ct_list_pop td:contains('배송하기')" ).on("click" , function() {
+			
+			//Debug..
+			//alert(  $("input:hidden[name='prodNo']",$(this)).val() );
+			//self.location ="/product/getProduct?prodNo="+prodNo; //$(this).text().trim()
+			alert($('.hidden_link', $(this)).text());
 			self.location=$('.hidden_link', $(this)).text();
 		
 		});
@@ -232,6 +261,7 @@
 						<a href="/purchase/updateTranCode?prodNo=${product.prodNo}&tranCode=2">배송하기</a>
 						///////////////////////////////////////////////////////////////////////// -->
 						배송하기
+						<span style="display: none" class="hidden_link">/purchase/updateTranCode?prodNo=${product.prodNo }&tranCode=2</span>
 					</c:if>
 				</td>
 				</c:if>

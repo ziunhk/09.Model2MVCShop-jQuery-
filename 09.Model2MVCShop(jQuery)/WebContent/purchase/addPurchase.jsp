@@ -2,15 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Insert title here</title>
+	<meta charset="EUC-KR">
+	<title>addPurcase</title>
 </head>
 
 <body>
-<!-- 
-<form name="updatePurchase" action="/updatePurchaseView.do?tranNo=${purchase.tranNo}" method="post">
- -->
  <form name="addPurchase" action="/purchase/addPurchaseView?tranNo=${purchase.tranNo}" method="post">
  
 다음과 같이 구매가 되었습니다.

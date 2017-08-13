@@ -1,36 +1,67 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page pageEncoding="EUC-KR"%>
 
-
-
-<%-- /////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////
-
-/////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// --%>
-
+<!DOCTYPE html>
 
 
 <html>
+
 <head>
+	<meta charset="EUC-KR">
+	
+	<title>구매확인등록</title>
+	
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
 
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
+	<!-- CDN(Content Delivery Network) 호스트 사용 -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>	
+	<script type="text/javascript" src="../javascript/calendar.js">
+	</script>
 
-<title>Insert title here</title>
+	<script type="text/javascript">
+	
+	//=====기존 Code 주석 처리 후 jQuery 변경 =====//
+	function fncAddPurchase() {
+		
+		//유효성검사....귀찮은데...
+		/*============= jQuery 변경 주석처리 =============
+		document.addPurchase.submit();
+		======================================*/
+		$("form").attr("method", "POST").attr("action", "/purchase/addPurchase").submit();
+		
+	}
+	
+	
+	$(function(){
+		//==>"등록" Event 처리 및 연결
+		//==> DOM Object GET 3가지 방법 ==> 1.$(tagName) : 2.(#id) : 3.$(.className)
+		//==>1과 3 방법의 조합 : $("tagName.className:filter함수") 사용함.
+		$("td.ct_btn01:contains('구매')").on("click", function(){
+			//Debug..
+			alert($("td.ct_btn01:contains('구매')").html());
+			fncAddPurchase();
+		});
+		
+		//==>"취소" Event 처리 및 연결
+		//==>DOM Object GET 3가지 방법 ==> 1.$(tagName) : 2.(#id) : 3.$(.className)
+		//==>1과 3 방법의 조합 : $("tagName.className:filter함수") 사용함.
+		$("td.ct_btn01:contains('취소')").on("click", function(){
+			//Debug..
+			//alert($("td.ct_btn01:contains('취소')").html());
+			javascript:history.go(-1);
+		});
+	});
 
-<script type="text/javascript" src="../javascript/calendar.js">
-</script>
-
-<script type="text/javascript">
-<!--
-function fncAddPurchase() {
-	document.addPurchase.submit();
-}
--->
-</script>
+	
+	</script>
+	
 </head>
 
 <body>
-
+<!-- 
  <form name="addPurchase" method="post" action="/purchase/addPurchase">
- 
+  -->
+<form name="addPurchase">
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
 		<td width="15" height="37">
@@ -210,7 +241,10 @@ function fncAddPurchase() {
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="javascript:fncAddPurchase();">구매</a>
+						 ///////////////////////////////////////////////////////////////////////// -->
+						 구매
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -220,7 +254,10 @@ function fncAddPurchase() {
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="javascript:history.go(-1)">취소</a>
+						 ///////////////////////////////////////////////////////////////////////// -->
+						 취소
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

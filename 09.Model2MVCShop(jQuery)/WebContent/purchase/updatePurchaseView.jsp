@@ -1,28 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-
+<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<%-- /////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////
-
-/////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// --%>
-
-
+<!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
+<meta charset="EUC-KR">
 
 <title>구매정보 수정</title>
 
-<script type="text/javascript" src="../javascript/calendar.js">
-</script>
+<link rel="stylesheet" href="/css/admin.css" type="text/css">
+
+	<!-- CDN(Content Delivery Network) 호스트 사용 -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../javascript/calendar.js"></script>
+	<script type="text/javascript">
+
+	//=====기존Code 주석 처리 후  jQuery 변경 ======//
+	
+	
+	function fncUpdatePurchase(){
+		
+		//document.detailForm.action='/purchase/updatePurchase';
+		//document.detailForm.submit();
+		$('form').attr("method", "POST").attr("action", "/purchase/updatePurchase?tranNo=${purchase.tranNo}").submit();
+		
+	}
+	
+	
+	$(function(){
+		//==>DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		//==> 1과 3 방법 조합 : $("tagName.className : filter함수") 사용함.
+		$("td.ct_btn01:contains('수정')").on("click", function(){
+			//Debug..
+			//alert($("td.ct_btn01:contains('수정')").html());
+			fncUpdatePurchase();
+			//self.location=$('.hidden_link', $(this)).text();
+			
+		});
+		
+		$("td.ct_btn01:contains('취소')").on("click", function(){
+			//Debug..
+			//alert($("td.ct_btn01:contains('취소')").html());
+			javascript:history.go(-1);
+		});
+		
+	});
+	
+	
+	</script>
 
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
 
-<form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}">
-
+<form name="updatePurchase">
+<!-- <form name="updatePurchase" method="post"	action="/purchase/updatePurchase?tranNo=${purchase.tranNo}"> -->
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="15" height="37">
@@ -138,7 +172,12 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-					<input type="submit" value="수정"/>
+					<!-- ////////////////// jQuery Event 처리로 변경됨 /////////////////////////
+					<input type="submit" value="수정"/> // 이것도 맞는데.....
+					///////////////////////////////////////////////////////////////////////// -->
+					수정
+					<input type="hidden" name="tranNo" value=${purchase.tranNo }>
+					<span style="display: none" class="hidden_link">/purchase/updatePurchase</span>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -148,7 +187,10 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+					<!-- ////////////////// jQuery Event 처리로 변경됨 /////////////////////////
 					<a href="javascript:history.go(-1)">취소</a>
+					///////////////////////////////////////////////////////////////////////// -->
+					취소
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

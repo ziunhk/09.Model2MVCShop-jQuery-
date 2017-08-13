@@ -138,7 +138,7 @@
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
 						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="/user/updateUser?userId=${user.userId}">수정</a>
-						 ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						 ///////////////////////////////////////////////////////////////////////// -->
 						 수정
 					</td>
 					<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
@@ -147,7 +147,7 @@
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
 						<!-- ////////////////// jQuery Event 처리로 변경됨 ///////////////////////// 
 						<a href="javascript:history.go(-1);">확인</a>
-						 ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						 ///////////////////////////////////////////////////////////////////////// -->
 						확인
 					</td>
 					<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
